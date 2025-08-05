@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Plugin, PluginConfig, OrcdkConfig, EventBus, EventTypes } from '@orcdkestrator/core';
 import { exec as execCallback } from 'child_process';
 import { promisify } from 'util';

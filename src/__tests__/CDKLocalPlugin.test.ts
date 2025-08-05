@@ -1,7 +1,6 @@
 import { CDKLocalPlugin } from '../index';
 import { PluginConfig, OrcdkConfig } from '@orcdkestrator/core';
 import { exec as execCallback } from 'child_process';
-import { promisify } from 'util';
 
 // Mock child_process
 jest.mock('child_process');
@@ -34,7 +33,7 @@ describe('CDKLocalPlugin', () => {
   let plugin: CDKLocalPlugin;
   let mockConsoleLog: jest.SpyInstance;
   let mockConsoleWarn: jest.SpyInstance;
-  let mockEventBus: any;
+  let mockEventBus: unknown;
   
   beforeEach(() => {
     jest.clearAllMocks();
@@ -113,7 +112,7 @@ describe('CDKLocalPlugin', () => {
   
   describe('checkCDKLocal', () => {
     it('sets hasCDKLocal to true when cdklocal found', async () => {
-      mockExec.mockImplementation((cmd: any, cb: any) => {
+      mockExec.mockImplementation((cmd: unknown, cb: unknown) => {
         cb(null, '/usr/local/bin/cdklocal', '');
         return {} as any;
       });
@@ -124,7 +123,7 @@ describe('CDKLocalPlugin', () => {
     });
     
     it('sets hasCDKLocal to false when cdklocal not found', async () => {
-      mockExec.mockImplementation((cmd: any, cb: any) => {
+      mockExec.mockImplementation((cmd: unknown, cb: unknown) => {
         cb(new Error('command not found'), '', 'command not found');
         return {} as any;
       });
@@ -191,7 +190,7 @@ describe('CDKLocalPlugin', () => {
     });
     
     it('checks for cdklocal and logs status when enabled', async () => {
-      mockExec.mockImplementation((cmd: any, cb: any) => {
+      mockExec.mockImplementation((cmd: unknown, cb: unknown) => {
         cb(null, '/usr/local/bin/cdklocal', '');
         return {} as any;
       });
@@ -199,7 +198,7 @@ describe('CDKLocalPlugin', () => {
       // Get the event handler from the mock
       const mockedCore = jest.requireMock('@orcdkestrator/core');
       const eventHandler = mockEventBus.on.mock.calls.find(
-        (call: any[]) => call[0] === mockedCore.EventTypes['orchestrator:before:pattern-detection']
+        (call: unknown[]) => call[0] === mockedCore.EventTypes['orchestrator:before:pattern-detection']
       )?.[1];
       
       await eventHandler();
@@ -228,7 +227,7 @@ describe('CDKLocalPlugin', () => {
       // Get the event handler from the mock
       const mockedCore = jest.requireMock('@orcdkestrator/core');
       const eventHandler = mockEventBus.on.mock.calls.find(
-        (call: any[]) => call[0] === mockedCore.EventTypes['orchestrator:before:pattern-detection']
+        (call: unknown[]) => call[0] === mockedCore.EventTypes['orchestrator:before:pattern-detection']
       )?.[1];
       
       await eventHandler();
@@ -239,7 +238,7 @@ describe('CDKLocalPlugin', () => {
     });
     
     it('handles cdklocal not found gracefully', async () => {
-      mockExec.mockImplementation((cmd: any, cb: any) => {
+      mockExec.mockImplementation((cmd: unknown, cb: unknown) => {
         cb(new Error('command not found'), '', 'command not found');
         return {} as any;
       });
@@ -247,7 +246,7 @@ describe('CDKLocalPlugin', () => {
       // Get the event handler from the mock
       const mockedCore = jest.requireMock('@orcdkestrator/core');
       const eventHandler = mockEventBus.on.mock.calls.find(
-        (call: any[]) => call[0] === mockedCore.EventTypes['orchestrator:before:pattern-detection']
+        (call: unknown[]) => call[0] === mockedCore.EventTypes['orchestrator:before:pattern-detection']
       )?.[1];
       
       await eventHandler();
