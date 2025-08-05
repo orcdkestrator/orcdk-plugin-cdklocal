@@ -15,13 +15,17 @@
     "clean": "rimraf dist",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "lint": "eslint src/**/*.ts",
+    "lint": "eslint src --ext .ts",
     "prepublishOnly": "npm run clean && npm run build"
   },
   "keywords": [
     "orcdkestrator",
     "plugin",
-    "cdk", "localstack", "cdklocal", "aws", "orchestration"
+    "cdk",
+    "localstack",
+    "cdklocal",
+    "aws",
+    "orchestration"
   ],
   "repository": {
     "type": "git",
@@ -32,7 +36,6 @@
   },
   "homepage": "https://github.com/orcdkestrator/orcdk-plugin-cdklocal#readme",
   "license": "MIT",
-
   "peerDependencies": {
     "@orcdkestrator/core": "^1.0.0"
   },
