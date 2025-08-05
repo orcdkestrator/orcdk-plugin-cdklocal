@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable no-console */
 import { Plugin, PluginConfig, OrcdkConfig, EventBus, EventTypes } from '@orcdkestrator/core';
 import { exec as execCallback } from 'child_process';
 import { promisify } from 'util';
@@ -19,7 +18,7 @@ const exec = promisify(execCallback);
  * ```
  */
 export class CDKLocalPlugin implements Plugin {
-  public readonly name = '@orcdkestrator/cdklocal';
+  public readonly name = '@orcdkestrator/orcdk-plugin-cdklocal';
   public readonly version = '1.0.0';
   
   private enabled = false;

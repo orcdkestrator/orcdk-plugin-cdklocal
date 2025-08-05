@@ -27,7 +27,7 @@ describe('CDKLocalPlugin', () => {
 
   describe('initialization', () => {
     it('should have correct name', () => {
-      expect(plugin.name).toBe('@orcdkestrator/cdklocal');
+      expect(plugin.name).toBe('@orcdkestrator/orcdk-plugin-cdklocal');
     });
   });
 
@@ -35,7 +35,7 @@ describe('CDKLocalPlugin', () => {
     it('should initialize the plugin successfully', async () => {
       await plugin.initialize(mockConfig, mockOrcdkConfig);
       
-      expect(plugin.name).toBe('@orcdkestrator/cdklocal');
+      expect(plugin.name).toBe('@orcdkestrator/orcdk-plugin-cdklocal');
       expect(plugin.version).toBeDefined();
     });
   });
