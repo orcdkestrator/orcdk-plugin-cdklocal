@@ -10,13 +10,15 @@ describe('CDKLocalPlugin', () => {
     mockConfig = {
       name: 'cdklocal',
       enabled: true,
-      options: {}
+      config: {}
     };
 
     mockOrcdkConfig = {
-      version: '1.0.0',
-      environments: {},
-      isLocal: true,
+      cdkRoot: 'cdk',
+      deploymentStrategy: 'auto',
+      environments: {
+        local: { displayName: 'Local', isLocal: true }
+      },
       plugins: []
     };
 
@@ -29,11 +31,12 @@ describe('CDKLocalPlugin', () => {
     });
   });
 
-  describe('beforeStackDeploy', () => {
-    it('should modify CDK command for local deployment', async () => {
-      await plugin.beforeStackDeploy(mockConfig, mockOrcdkConfig);
-      // Test passes if no errors are thrown
-      expect(true).toBe(true);
+  describe('initialize', () => {
+    it('should initialize the plugin successfully', async () => {
+      await plugin.initialize(mockConfig, mockOrcdkConfig);
+      
+      expect(plugin.name).toBe('@orcdkestrator/cdklocal');
+      expect(plugin.version).toBeDefined();
     });
   });
 });
