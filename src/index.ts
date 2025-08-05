@@ -3,14 +3,8 @@
 import { Plugin, PluginConfig, OrcdkConfig, EventBus, EventTypes } from '@orcdkestrator/core';
 import { exec as execCallback } from 'child_process';
 import { promisify } from 'util';
-import * as fs from 'fs';
-import * as path from 'path';
 
 const exec = promisify(execCallback);
-
-// Read version from package.json
-const packageJsonPath = path.join(__dirname, '../..', 'package.json');
-const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 
 /**
  * CDKLocal plugin for CDK command interception
@@ -26,7 +20,7 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
  */
 export class CDKLocalPlugin implements Plugin {
   public readonly name = '@orcdkestrator/cdklocal';
-  public readonly version = packageJson.version;
+  public readonly version = '1.0.0';
   
   private enabled = false;
   private hasCDKLocal = false;

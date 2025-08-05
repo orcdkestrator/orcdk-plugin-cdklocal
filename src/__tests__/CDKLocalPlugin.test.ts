@@ -27,7 +27,7 @@ describe('CDKLocalPlugin', () => {
 
   describe('initialization', () => {
     it('should have correct name', () => {
-      expect(plugin.name).toBe('cdklocal');
+      expect(plugin.name).toBe('@orcdkestrator/cdklocal');
     });
   });
 
